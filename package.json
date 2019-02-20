@@ -1,0 +1,36 @@
+{
+  "name": "todomvc-react",
+  "version": "1.0.0",
+  "description": "\"simple todo list on react\"",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-scripts": "2.1.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebellix/todomvc-react.git"
+  },
+  "author": "rebellix",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rebellix/todomvc-react/issues"
+  },
+  "homepage": "https://github.com/rebellix/todomvc-react#readme"
+}
