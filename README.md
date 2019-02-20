@@ -1,2 +1,2 @@
 # todomvc-react
-todo-list on react
+simple todo-list on react
