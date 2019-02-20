@@ -11,6 +11,7 @@ class App extends Component {
     this.state = {
       inputText: '',
       items: [],
+      itemsToShow: ''
     };
 
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -18,6 +19,10 @@ class App extends Component {
     this.toggleItem = this.toggleItem.bind(this);
     this.removeItem = this.removeItem.bind(this);
     this.toggleAllItems = this.toggleAllItems.bind(this);
+    this.showAllItems = this.showAllItems.bind(this);
+    this.showActiveItems = this.showActiveItems.bind(this);
+    this.showCompletedItems = this.showCompletedItems.bind(this);
+    this.clearCompletedItems = this.clearCompletedItems.bind(this);
   }
 
   handleTextChange(text) {
@@ -39,7 +44,6 @@ class App extends Component {
         item.done = !item.done;
       return item;
     })} );
-    console.log(this.state.items);
   }
 
   removeItem(name) {
@@ -61,8 +65,35 @@ class App extends Component {
     console.log(this.state.items);
   }
 
+  showAllItems() {
+    this.setState({ itemsToShow: 'all' });
+  }
+
+  showActiveItems() {
+    this.setState({ itemsToShow: 'active' });
+  }
+
+  showCompletedItems() {
+    this.setState({ itemsToShow: 'completed' });
+  }
+
+  clearCompletedItems() {
+    this.setState({ items: this.state.items.filter(item => !item.done) });
+  }
+
 
   render() {
+    const counter = this.state.items.reduce((acc, item) => !item.done ? acc + 1 : acc, 0);
+    const itemsToRender = this.state.items.filter(item => {
+      switch (this.state.itemsToShow) {
+        case 'active':
+          return !item.done;
+        case 'completed':
+          return item.done;
+        default:
+          return item;
+      }
+    });
     return (
       <div>
         <InputForm
@@ -72,11 +103,17 @@ class App extends Component {
           onToggleAll={this.toggleAllItems}
         />
         <TodoList
-          todos={this.state.items}
+          todos={itemsToRender}
           onRemoveTodo={this.removeItem}
           onToggleTodo={this.toggleItem}
         />
-        <FilterBar />
+        <FilterBar 
+          numOfUncompleted={counter}
+          onShowAll={this.showAllItems}
+          onShowActive={this.showActiveItems}
+          onShowCompleted={this.showCompletedItems}
+          onClearCompleted={this.clearCompletedItems}
+        />
       </div>
     );
   }
