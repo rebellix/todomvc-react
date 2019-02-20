@@ -5,6 +5,7 @@ class InputForm extends Component {
         super(props);
         this.handleTextChange = this.handleTextChange.bind(this);
         this.addItem = this.addItem.bind(this);
+        this.toggleAll = this.toggleAll.bind(this);
     }
 
     handleTextChange(e) {
@@ -14,18 +15,25 @@ class InputForm extends Component {
     addItem(e) {
         e.preventDefault();
         this.props.onHandleItem();
-
     }
     
+    toggleAll() {
+        this.props.onToggleAll();
+    }
+
     render(){
         const newItemText = this.props.inputText;
+        const placeholder = 'What needs to be done?';
 		return (
-            <form onSubmit={this.addItem}>
-                <input 
-                    placeholder="Add new item..." 
-                    value={newItemText} 
-                    onChange={this.handleTextChange}/>           
-            </form>
+            <div>
+                <button onClick={() => { this.toggleAll()} }>Y</button>
+                <form onSubmit={this.addItem}>                
+                    <input 
+                        placeholder={placeholder} 
+                        value={newItemText} 
+                        onChange={this.handleTextChange}/>           
+                </form>
+            </div>
 		);
 	}
 }
