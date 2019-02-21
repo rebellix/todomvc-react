@@ -31,3 +31,53 @@
     transform: rotate(360deg);
   }
 }
+
+.input-group {
+  margin-top: 1em;
+  width: 100%;
+}
+
+.list-group {
+  margin-top: 1em;
+}
+
+.fa-check {
+  color: #fff;
+}
+
+.completed {
+  color: rgb(13, 92, 26);
+}
+
+.item-completed {
+  color: rgb(155, 148, 148);
+  font-style: italic;
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-content {
+  font-weight: 700;
+  padding-left: 15px;
+}
+
+.circle {
+  border: 1px solid rgb(165, 161, 161);
+  border-radius: 50%;
+}
+
+.list-group-item:hover .hidden {
+  display: inline-block;
+  float: right;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+
