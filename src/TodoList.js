@@ -16,7 +16,9 @@ class TodoList extends Component {
                                                         onClick={ () => { this.toggleItem(index)} }>
                                                         <i className={item.done ? 'fas fa-check completed' : 'fas fa-check'}></i>    
                                                     </button>
-                                                    <span className={item.done ? 'item-content item-completed' : 'item-content'}>{item.text}</span>
+                                                    <div className="content-box">
+                                                        <span className={item.done ? 'item-content item-completed' : 'item-content'}>{item.text}</span>
+                                                    </div>
                                                     <button
                                                         className="btn btn-light hidden"  
                                                         onClick={ () => { this.removeItem(item.text)} }>
