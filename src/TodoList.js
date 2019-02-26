@@ -20,7 +20,7 @@ class TodoList extends Component {
                                                         <span className={item.done ? 'item-content item-completed' : 'item-content'}>{item.text}</span>
                                                     </div>
                                                     <button
-                                                        className="btn btn-light hidden"  
+                                                        className="btn btn-light no-border hidden"  
                                                         onClick={ () => { this.removeItem(item.text)} }>
                                                         <i className="fas fa-times"></i>    
                                                     </button>
