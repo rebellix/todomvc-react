@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import InputForm from './InputForm';
-import TodoList from './TodoList';
-import FilterBar from './FilterBar';
+import InputForm from '../InputForm/InputForm';
+import TodoList from '../TodoList/TodoList';
+import FilterBar from '../FilterBar/FilterBar';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
 	});
 
 	addItem = () => {
-		if (!this.state.inputText) {
+		if (!this.state.inputText.trim()) {
 			alert('nothing was added!');
 			return;
 		}
@@ -84,7 +84,8 @@ class App extends Component {
 	});
 
 	render() {
-		const counter = this.state.items.reduce((acc, item) => (!item.done ? acc + 1 : acc), 0);
+		const counter = this.state.items.reduce((acc, item) => (item.done ? acc : acc + 1), 0);
+		
 		const itemsToRender = this.state.items.filter((item) => {
 			switch (this.state.itemsToShow) {
 			case 'active':
@@ -95,25 +96,26 @@ class App extends Component {
 				return item;
 			}
 		});
+		
 		return (
 			<div className="container">
 				<InputForm
 					inputText={this.state.inputText}
-					onTextChange={this.handleTextChange}
-					onHandleItem={this.addItem}
-					onToggleAll={this.toggleAllItems}
+					handleTextChange={this.handleTextChange}
+					addItem={this.addItem}
+					toggleAllItems={this.toggleAllItems}
 				/>
 				<TodoList
 					todos={itemsToRender}
-					onRemoveTodo={this.removeItem}
-					onToggleTodo={this.toggleItem}
+					removeItem={this.removeItem}
+					toggleItem={this.toggleItem}
 				/>
 				<FilterBar
 					numOfUncompleted={counter}
-					onShowAll={this.showAllItems}
-					onShowActive={this.showActiveItems}
-					onShowCompleted={this.showCompletedItems}
-					onClearCompleted={this.clearCompletedItems}
+					showAll={this.showAllItems}
+					showActive={this.showActiveItems}
+					showCompleted={this.showCompletedItems}
+					clearCompleted={this.clearCompletedItems}
 				/>
 			</div>
 		);
